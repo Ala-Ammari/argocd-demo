@@ -137,7 +137,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: alaammari98/demo:todo-frontend4
+        image: alaammari98/demo:todo-frontend5
         ports:
         - containerPort: 8080
         command: ["/bin/sh"]
