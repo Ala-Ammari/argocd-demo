@@ -135,22 +135,11 @@ spec:
       labels:
         app: frontend
     spec:
-      securityContext:
-        runAsNonRoot: true
-        runAsUser: 1001
-        runAsGroup: 1001
-        fsGroup: 1001
       containers:
       - name: frontend
         image: alaammari98/demo:todo-frontend2
         ports:
-        - containerPort: 8080  
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-            - ALL
-          readOnlyRootFilesystem: false  
+        - containerPort: 8080
 ---
 # Frontend Service
 apiVersion: v1
