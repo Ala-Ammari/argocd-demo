@@ -142,7 +142,7 @@ spec:
         fsGroup: 1001
       containers:
       - name: frontend
-        image: alaammari98/demo:todo-frontend
+        image: alaammari98/demo:todo-frontend2
         ports:
         - containerPort: 8080  
         securityContext:
