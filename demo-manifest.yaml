@@ -140,6 +140,8 @@ spec:
         image: alaammari98/demo:todo-frontend2
         ports:
         - containerPort: 8080
+        command: ["/bin/sh"]
+        args: ["-c", "mkdir -p /tmp/nginx-pid /tmp/nginx-cache && nginx -g 'daemon off; pid /tmp/nginx-pid/nginx.pid;'"]
 ---
 # Frontend Service
 apiVersion: v1
