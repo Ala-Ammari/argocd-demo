@@ -138,16 +138,19 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
       containers:
       - name: frontend
         image: alaammari98/demo:todo-frontend
         ports:
-        - containerPort: 8080
+        - containerPort: 8080  
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
             drop:
             - ALL
+          readOnlyRootFilesystem: false  
 ---
 # Frontend Service
 apiVersion: v1
@@ -161,9 +164,9 @@ spec:
   ports:
   - protocol: TCP
     port: 80
-    targetPort: 80
+    targetPort: 8080  
 ---
-# Frontend Route (OpenShift)
+# Frontend Route 
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
@@ -174,9 +177,9 @@ spec:
     kind: Service
     name: frontend-service
   port:
-    targetPort: 80
+    targetPort: 8080  
 ---
-# Backend Route (OpenShift)
+# Backend Route 
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
